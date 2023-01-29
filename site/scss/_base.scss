@@ -1,0 +1,35 @@
+@use "sass:math";
+
+:root {
+    --very-dark-magenta: hsl(300, 43%, 22%);
+    --soft-pink: hsl(333, 80%, 67%);
+
+    --dark-grayish-magenta: hsl(303, 10%, 53%);
+    --light-grayish-magenta: hsl(300, 24%, 96%);
+    --white: hsl(0, 0%, 100%);
+
+    --font: 'League Spartan', sans-serif;
+}
+
+@function rem($pxValue) {
+    $remValue: math.div($pxValue, 16px) * 1rem;
+    @return $remValue;
+}
+
+$rating-offset: 96px;
+$border-radius: rem(10px);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font);
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: grid;
+    justify-content: center;
+    align-content: space-evenly;
+}

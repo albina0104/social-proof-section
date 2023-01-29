@@ -1,0 +1,8 @@
+{
+    "scripts": {
+        "build": "sass --source-map site/scss:site/css"
+    },
+    "devDependencies": {
+        "sass": "^1.49.8"
+    }
+}

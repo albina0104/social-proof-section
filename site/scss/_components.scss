@@ -1,0 +1,113 @@
+@use "base" as *;
+
+.heading {
+    color: var(--very-dark-magenta);
+    font-size: 3.23rem;
+}
+
+.main-text {
+    padding-top: rem(30px);
+    font-size: 1.12rem;
+    line-height: 1.5;
+    color: var(--dark-grayish-magenta);
+}
+
+.ratings {
+    display: grid;
+    row-gap: 18px;
+    align-content: center;
+}
+
+
+$image-count: 5;
+$image-url: 'url("../images/icon-star.svg")';
+$image-urls: $image-url;
+
+$image-size: rem(17px);
+$image-gap: rem(10px);
+$image-start: rem(30px);
+$image-position: $image-start;
+$image-end: $image-start + $image-size;
+
+@for $i from 1 through ($image-count - 1) {
+    $image-urls: #{ $image-urls + ', ' + $image-url };
+    $image-position: #{ $image-position + ', ' + ($i * ($image-gap + $image-size) + $image-start) };
+    $image-end: $image-end + $image-gap + $image-size;
+}
+
+.rating {
+    $padding: 21px;
+    background-image: $image-urls;
+    background-position: $image-position;
+    background-size: $image-size;
+    background-repeat: no-repeat;
+
+    background-color: var(--light-grayish-magenta);
+    border-radius: $border-radius;
+    padding: $padding $padding $padding $image-start + $image-end;
+    color: var(--very-dark-magenta);
+    font-weight: 700;
+    width: calc(100% - $rating-offset);
+
+    &:nth-child(1) {
+        justify-self: start;
+    }
+    &:nth-child(2) {
+        justify-self: center;
+    }
+    &:nth-child(3) {
+        justify-self: end;
+    }
+}
+
+.review-card {
+    background-color: var(--very-dark-magenta);
+    color: var(--white);
+    padding: 35px 30px;
+    border-radius: $border-radius;
+}
+
+.reviewer {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+        "photo name"
+        "photo type";
+    justify-content: start;
+    align-items: center;
+    column-gap: 20px;
+    font-size: 1.08rem;
+
+    &__photo {
+        grid-area: photo;
+        border-radius: 50%;
+        width: rem(40px);
+        aspect-ratio: 1/1;
+    }
+    &__name {
+        font-weight: 700;
+    }
+    &__type {
+        color: var(--soft-pink);
+    }
+}
+
+.review-card__text {
+    font-weight: 500;
+    line-height: 1.5;
+    padding-top: 25px;
+}
+
+.attribution {
+    font-size: rem(11px);
+    text-align: center;
+}
+
+.attribution a {
+    color: var(--very-dark-magenta);
+
+    &:hover {
+        color: var(--soft-pink);
+    }
+}

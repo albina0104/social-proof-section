@@ -1,0 +1,31 @@
+name: GitHub Actions Build and Deploy
+on: 
+  push:
+    branches: [ master ]
+    paths: "site/**"
+jobs:
+  Build-and-Deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      pages: write
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - run: cd ${{ github.workspace }}
+      - name: Change package.json
+        run: |
+          rm package.json package-lock.json
+          mv package-ci.json package.json
+          mv package-lock-ci.json package-lock.json
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+      - run: npm run build
+      - name: Upload pages
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./site
+      - name: Deploy pages
+        uses: actions/deploy-pages@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,43 @@
+@use "base" as *;
+
+$layout-margin: 40px;
+$max-width: rem(1110px);
+
+main {
+    max-width: $max-width;
+    margin: $layout-margin;
+}
+
+.top-block {
+    display: flex;
+    margin-bottom: 9vh;
+}
+
+.main-content {
+    flex: 0 2 rem(411px);
+    margin-right: $layout-margin;
+}
+
+.ratings {
+    flex: 0 1 rem(445px + $rating-offset);
+    margin-left: auto;
+}
+
+.review-block {
+    $offset: rem(15px);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: $offset $offset auto $offset $offset;
+    column-gap: 31px;
+}
+
+@for $i from 1 through 3 {
+    .review-card:nth-child(#{$i}) {
+        grid-column: $i #{'/'} $i + 1;
+        grid-row: $i #{'/'} $i + 3;
+    }
+}
+
+footer {
+    margin: $layout-margin;
+}
