@@ -2,7 +2,7 @@
 
 .heading {
     color: var(--very-dark-magenta);
-    font-size: 3.23rem;
+    font-size: clamp(2.35rem, 10vw, 3.23rem);
 }
 
 .main-text {
@@ -10,6 +10,10 @@
     font-size: 1.12rem;
     line-height: 1.5;
     color: var(--dark-grayish-magenta);
+
+    @include mobile {
+        padding-top: rem(24px);
+    }
 }
 
 .ratings {
@@ -57,6 +61,10 @@ $image-end: $image-start + $image-size;
     }
     &:nth-child(3) {
         justify-self: end;
+    }
+
+    @include tablet {
+        width: 100%;
     }
 }
 
