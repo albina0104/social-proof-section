@@ -1,26 +1,46 @@
 @use "base" as *;
 
 $layout-margin: 40px;
+$layout-margin-mobile: 26px;
 $max-width: rem(1110px);
 
 main {
     max-width: $max-width;
     margin: $layout-margin;
+
+    @include mobile {
+        margin: $layout-margin-mobile;
+    }
 }
 
 .top-block {
     display: flex;
     margin-bottom: 9vh;
+
+    @include tablet {
+        display: block;
+        margin-bottom: rem(50px);
+    }
 }
 
 .main-content {
     flex: 0 2 rem(411px);
     margin-right: $layout-margin;
+
+    @include tablet {
+        text-align: center;
+        margin-bottom: $layout-margin;
+        margin-right: 0;
+    }
 }
 
 .ratings {
     flex: 0 1 rem(445px + $rating-offset);
     margin-left: auto;
+
+    @include tablet {
+        margin-left: 0;
+    }
 }
 
 .review-block {
@@ -29,6 +49,13 @@ main {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: $offset $offset auto $offset $offset;
     column-gap: 31px;
+
+    @include tablet {
+        display: block;
+        & > :not(:last-child) {
+            margin-bottom: rem(16px);
+        }
+    }
 }
 
 @for $i from 1 through 3 {

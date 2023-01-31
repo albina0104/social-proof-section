@@ -19,6 +19,18 @@
 $rating-offset: 96px;
 $border-radius: rem(10px);
 
+@mixin tablet {
+    @media screen and (max-width: rem(768px)) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media screen and (max-width: rem(480px)) {
+        @content;
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
