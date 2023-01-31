@@ -1,8 +1,12 @@
 {
     "scripts": {
-        "build": "sass --source-map site/scss:site/css"
+        "build": "sass --source-map site/scss:site/css",
+        "postbuild": "postcss site/css/*.css -u autoprefixer mqpacker -r"
     },
     "devDependencies": {
+        "autoprefixer": "^10.4.2",
+        "mqpacker": "^7.0.0",
+        "postcss-cli": "^9.1.0",
         "sass": "^1.49.8"
     }
 }
