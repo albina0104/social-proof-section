@@ -29,7 +29,7 @@ $image-urls: $image-url;
 
 $image-size: rem(17px);
 $image-gap: rem(10px);
-$image-start: rem(30px);
+$image-start: rem(0px);
 $image-position: $image-start;
 $image-end: $image-start + $image-size;
 
@@ -40,18 +40,28 @@ $image-end: $image-start + $image-size;
 }
 
 .rating {
+    display: grid;
+    grid-template-areas: "stars text";
+    justify-content: left;
+    align-items: center;
     $padding: 21px;
-    background-image: $image-urls;
-    background-position: $image-position;
-    background-size: $image-size;
-    background-repeat: no-repeat;
+    column-gap: rem(9px) + rem($padding);
 
     background-color: var(--light-grayish-magenta);
     border-radius: $border-radius;
-    padding: $padding $padding $padding $image-start + $image-end;
+    padding: rem($padding);
     color: var(--very-dark-magenta);
     font-weight: 700;
     width: calc(100% - $rating-offset);
+
+    &__stars {
+        background-image: $image-urls;
+        background-position: $image-position;
+        background-size: $image-size;
+        background-repeat: no-repeat;
+        width: $image-end;
+        height: rem(16px);
+    }
 
     &:nth-child(1) {
         justify-self: start;
@@ -65,6 +75,16 @@ $image-end: $image-start + $image-size;
 
     @include tablet {
         width: 100%;
+    }
+
+    @include mobile {
+        grid-template-areas:
+            "stars"
+            "text";
+        justify-content: center;
+        justify-items: center;
+        text-align: center;
+        row-gap: rem(17px);
     }
 }
 
