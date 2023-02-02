@@ -3,6 +3,10 @@
 .heading {
     color: var(--very-dark-magenta);
     font-size: clamp(2.35rem, 10vw, 3.23rem);
+    
+    @include tablet {
+        padding-top: 30px;
+    }
 }
 
 .main-text {
