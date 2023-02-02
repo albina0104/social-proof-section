@@ -44,4 +44,11 @@ body {
     display: grid;
     justify-content: center;
     align-content: space-evenly;
+    background-image: url("../images/bg-pattern-top-desktop.svg"), url("../images/bg-pattern-bottom-desktop.svg");
+    background-position: left top, right bottom;
+    background-repeat: no-repeat;
+
+    @include mobile {
+        background-image: url("../images/bg-pattern-top-mobile.svg"), url("../images/bg-pattern-bottom-mobile.svg");
+    }
 }
