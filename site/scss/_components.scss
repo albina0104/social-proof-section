@@ -49,7 +49,7 @@ $image-end: $image-start + $image-size;
 
     background-color: var(--light-grayish-magenta);
     border-radius: $border-radius;
-    padding: rem($padding);
+    padding: rem($padding) rem($padding) rem($padding) rem($padding) + $image-gap;
     color: var(--very-dark-magenta);
     font-weight: 700;
     width: calc(100% - $rating-offset);
@@ -85,6 +85,7 @@ $image-end: $image-start + $image-size;
         justify-items: center;
         text-align: center;
         row-gap: rem(17px);
+        padding: rem($padding);
     }
 }
 
